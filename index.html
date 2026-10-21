@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Destin Tailors — Bespoke Menswear & Women's Fashion, Akure</title>
+<meta name="description" content="Destin Tailors is a leading Nigerian fashion brand in Akure specializing in luxury suits, groomswear, bespoke custom clothing, and alterations.">
+<meta property="og:title" content="Destin Tailors — Elegant Fitting & Precision, Akure">
+<meta property="og:description" content="Luxury suits, groomswear, bespoke custom clothing, and precision alterations — cut by hand in Akure.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESTIN TAILORS — 100% Responsive CSS
+   Palette: Midnight Navy & Champagne Gold
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --black:#080D1A; /* Deep Midnight Navy */
+  --char:#0E1629;
+  --cream:#F9F6F0;
+  --dim:#A0AABF;
+  
+  /* LUXURY GOLD ACCENT */
+  --brand:#D4AF37; 
+  --brand-dk:#B5952F;
+  
+  --line:rgba(249,246,240,.12);
+  --line-dk:rgba(8,13,26,.12);
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --wrap:1180px;
+}
+
+/* GLOBAL RESPONSIVE FIXES */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  background: var(--black);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, a, span, li, label {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+
+.wrap{width:min(var(--wrap),calc(100% - 2.5rem));margin-inline:auto}
+.section{padding:clamp(4rem,9vw,7.5rem) 0}
+.on-light{background:var(--cream);color:var(--black)}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,6.2vw,4.6rem)}
+h2{font-size:clamp(2rem,4.2vw,3.2rem)}
+h3{font-size:1.35rem;line-height:1.25}
+em{font-style:italic;color:var(--brand)}
+p{color:var(--dim)}
+.on-light p{color:#4A5366}
+
+.eyebrow{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--brand);font-weight:400;margin-bottom:1.1rem;
+}
+.on-light .eyebrow{color:var(--brand-dk)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.95rem 1.9rem;border:1px solid transparent;border-radius:2px;
+  font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  transition:transform .3s ease,background .3s ease,color .3s ease,border-color .3s ease;
+  cursor:pointer;white-space:nowrap;
+}
+.btn--brand{background:var(--brand);color:var(--black)}
+.btn--brand:hover{background:#E8C655;transform:translateY(-2px)}
+.btn--ghost{border-color:rgba(249,246,240,.34);color:var(--cream)}
+.btn--ghost:hover{background:var(--cream);color:var(--black)}
+.on-light .btn--ghost{border-color:rgba(8,13,26,.28);color:var(--black)}
+.on-light .btn--ghost:hover{background:var(--black);color:var(--cream)}
+
+/* ---------- image placeholders ---------- */
+.ph{
+  position:relative;overflow:hidden;display:grid;align-items:end;justify-items:start;
+  padding:1.1rem;border-radius:2px;width:100%;height:100%;
+  background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 1px,transparent 1px 8px),
+                    radial-gradient(130% 130% at 18% 0%,#1C2842 0%,#10172A 55%,#080D1A 100%);
+  background-size:cover;background-position:center;
+  border:1px solid rgba(249,246,240,.08);
+}
+.ph span{
+  font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(255,255,255,.95);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .85s ease,transform .85s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .marquee__track{animation:none}
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:sticky;top:0;z-index:100;width: 100%;
+  background:rgba(8,13,26,.75);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:background .35s ease,border-color .35s ease;
+}
+.nav.is-stuck{background:rgba(8,13,26,.98);border-bottom-color:var(--line)}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:78px}
+
+.brand{display:flex;align-items:center;gap:.85rem;flex: 1 1 auto; min-width: 0;}
+
+.brand__logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--black); 
+  border: 1px solid var(--brand);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--brand);
+  font-weight: 500;
+}
+
+.brand__txt{display:flex;flex-direction:column;line-height:1.15;min-width: 0;}
+.brand__txt strong{
+  font-family:var(--serif);font-weight:500;font-size:1.05rem;letter-spacing:.06em;
+  text-transform:uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.brand__txt small{
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.nav__links{display:flex;align-items:center;gap:2rem}
+.nav__links a:not(.btn){
+  font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);
+  opacity:.8;transition:opacity .25s,color .25s;position:relative;
+}
+.nav__links a:not(.btn)::after{
+  content:'';position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--brand);
+  transition:width .3s ease;
+}
+.nav__links a:not(.btn):hover{opacity:1;color:var(--brand)}
+.nav__links a:not(.btn):hover::after{width:100%}
+.nav__cta{padding:.7rem 1.3rem;font-size:.68rem;flex-shrink: 0;}
+
+.nav__toggle{
+  display:none;width:44px;height:44px;background:none;border:1px solid var(--line);
+  border-radius:2px;cursor:pointer;padding:0;place-items:center;flex-shrink: 0;
+}
+.nav__toggle span{display:block;width:20px;height:1.5px;background:var(--cream);margin:3px auto;transition:.3s}
+.nav__toggle.is-open span:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+.nav__toggle.is-open span:nth-child(2){opacity:0}
+.nav__toggle.is-open span:nth-child(3){transform:translateY(-4.5px) rotate(-45deg)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;overflow:hidden;padding:clamp(3rem,7vw,6rem) 0 clamp(4rem,8vw,7rem)}
+.hero__glow{
+  position:absolute;inset:-20% -10% auto auto;width:min(760px,80vw);height:min(760px,80vw);
+  background:radial-gradient(circle,rgba(212, 175, 55, .12),transparent 62%);
+  pointer-events:none;
+}
+.hero__in{
+  position:relative;display:grid;grid-template-columns:minmax(0, 1.12fr) minmax(0, .88fr);
+  gap:clamp(2rem,5vw,4.5rem);align-items:center;
+}
+.hero__copy { min-width: 0; }
+.hero h1{margin-bottom:1.4rem}
+.hero__sub{font-size:1.02rem;max-width:46ch;margin-bottom:2.2rem}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.4rem}
+
+.hero__proof{
+  display:flex;align-items:center;flex-wrap:wrap;gap:.55rem;
+  font-size:.78rem;letter-spacing:.06em;color:var(--dim);
+}
+.hero__proof strong{color:var(--cream);font-weight:500}
+.stars{color:var(--brand);letter-spacing:.12em;font-size:.85rem}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--dim);margin-inline:.35rem}
+
+.hero__panel{position:relative;min-width: 0;}
+.hero__ph{aspect-ratio:4/5; width: 100%;}
+.hero__badge{
+  position:absolute;left:-.9rem;bottom:-.9rem;
+  background:var(--brand);color:var(--black);
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  padding:.7rem 1.1rem;white-space:nowrap;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.marquee{
+  border-block:1px solid var(--line);background:#050914;overflow:hidden;width: 100%;
+}
+.marquee__track{
+  display:flex;width:max-content;gap:0;
+  animation:slide 34s linear infinite;
+}
+.marquee__track > div{display:flex;align-items:center}
+.marquee span{
+  display:block;padding:1.1rem 2.2rem;
+  font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(249,246,240,.55);
+  white-space:nowrap;
+}
+.marquee span::after{content:'◆';color:var(--brand);margin-left:2.2rem;font-size:.5rem;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about__in{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.about__media{position:relative;display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:.8rem;min-width: 0;}
+.about__ph1{grid-column:1/-1;aspect-ratio:16/11;width: 100%;}
+.about__ph2{grid-column:1/-1;aspect-ratio:16/9;width: 100%;}
+.about__copy { min-width: 0; }
+.about__copy h2{margin-bottom:1.4rem}
+.about__copy p + p{margin-top:1rem}
+.ticks{list-style:none;margin-top:2rem;display:grid;gap:.75rem}
+.ticks li{
+  position:relative;padding-left:1.9rem;font-size:.9rem;color:#4A5366;
+}
+.ticks li::before{
+  content:'';position:absolute;left:0;top:.55em;width:9px;height:9px;
+  border:1px solid var(--brand-dk);transform:rotate(45deg);
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.svc__head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.svc__grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:1px;background:var(--line)}
+.svc{
+  background:var(--black);padding:2.2rem 1.9rem;transition:background .35s ease;
+  display:flex;flex-direction:column;gap:.7rem;min-width: 0;
+}
+.svc:hover{background:#10172A}
+.svc__no{font-family:var(--serif);font-size:.85rem;color:var(--brand);letter-spacing:.1em}
+.svc h3{color:var(--cream)}
+.svc p{font-size:.88rem;line-height:1.65;margin:0}
+
+/* ============================================================
+   LOOKBOOK
+   ============================================================ */
+.look{
+  display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));
+  grid-auto-rows:clamp(150px,17vw,210px);gap:.8rem;
+}
+.look .ph{transition:transform .5s ease,filter .5s ease}
+.look .ph:hover{transform:scale(1.015);filter:brightness(1.15)}
+.look .ph:nth-child(1){grid-column:span 2;grid-row:span 2}
+.look .ph:nth-child(2){grid-column:span 1;grid-row:span 1}
+.look .ph:nth-child(3){grid-column:span 1;grid-row:span 1}
+.look .ph:nth-child(4){grid-column:span 1;grid-row:span 1}
+.look .ph:nth-child(5){grid-column:span 1;grid-row:span 1}
+
+.look__note{margin-top:1.6rem;font-size:.82rem;letter-spacing:.04em}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+.steps{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:clamp(1.5rem,4vw,3rem);margin-top:3rem}
+.step{border-top:1px solid var(--line);padding-top:1.6rem;min-width: 0;}
+.step__no{font-family:var(--serif);font-size:2.2rem;color:rgba(212,175,55,.3);line-height:1;margin-bottom:.9rem}
+.step h3{margin-bottom:.6rem;color:var(--cream)}
+.step p{font-size:.9rem}
+
+/* ============================================================
+   REVIEWS
+   ============================================================ */
+.rev__head{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.rev__score{font-family:var(--serif);font-size:3.6rem;line-height:1;color:var(--black)}
+.rev__meta{font-size:.85rem;color:#4A5366}
+.rev__grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:1.2rem}
+.rev{
+  background:#F2EFE9;border:1px solid var(--line-dk);padding:1.8rem 1.6rem;
+  display:flex;flex-direction:column;gap:.9rem;border-radius:2px;min-width: 0;
+}
+.rev .stars{font-size:.8rem; color: var(--brand-dk);}
+.rev p{font-size:.92rem;color:#1A2235;font-style:italic;font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.rev__who{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#5A6376;margin-top:auto}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact__in{display:grid;grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);gap:clamp(2rem,5vw,4.5rem)}
+.contact h2{margin-bottom:1.2rem}
+.contact p{max-width:44ch}
+.contact__col { min-width: 0; }
+
+.info{list-style:none;margin-top:2.4rem;display:grid;gap:1.5rem}
+.info li{display:grid;grid-template-columns:auto minmax(0, 1fr);gap:1rem;align-items:start}
+.info__ico{
+  width:34px;height:34px;display:grid;place-items:center;flex:none;
+  border:1px solid var(--line);border-radius:50%;color:var(--brand);font-size:.8rem;
+}
+.info__k{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin-bottom:.2rem}
+.info__v{font-size:.95rem;color:var(--cream);line-height:1.5}
+.info__v a:hover{color:var(--brand)}
+
+.hours{margin-top:1rem;font-size:.85rem;color:var(--dim);line-height:2}
+.hours b{color:var(--cream);font-weight:400}
+
+/* form card */
+.card{
+  background:var(--char);border:1px solid var(--line);border-radius:2px;
+  padding:clamp(1.6rem,3vw,2.4rem);
+}
+.card h3{margin-bottom:.4rem;color:var(--cream)}
+.card > p{font-size:.85rem;margin-bottom:1.6rem}
+.field{display:grid;gap:.45rem;margin-bottom:1.1rem}
+.field label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.field input,.field select,.field textarea{
+  width:100%;max-width:100%;min-width: 0;
+  background:#050914;border:1px solid rgba(249,246,240,.16);
+  color:var(--cream);padding:.8rem .9rem;border-radius:2px;
+  font-family:var(--sans);font-size:.9rem;font-weight:300;
+  transition:border-color .25s ease,background .25s ease;
+  display: block;
+}
+.field textarea{resize:vertical;min-height:84px}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--brand);background:#0A1020;
+}
+.field select{
+  appearance:none;
+  background-image: linear-gradient(45deg,transparent 50%,var(--brand) 50%),linear-gradient(135deg,var(--brand) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); opacity: 0.6; cursor: pointer;
+}
+.card .btn{width:100%;margin-top:.4rem}
+.card__foot{font-size:.72rem;color:var(--dim);text-align:center;margin-top:.9rem}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:#050914;border-top:1px solid var(--line);padding:3.5rem 0 2rem}
+.footer__in{display:grid;grid-template-columns:1.4fr minmax(0, 1fr) minmax(0, 1fr);gap:2.5rem}
+.footer h4{
+  font-family:var(--sans);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim);font-weight:400;margin-bottom:1.1rem;
+}
+.footer ul{list-style:none;display:grid;gap:.6rem}
+.footer a{font-size:.9rem;color:var(--cream);opacity:.75;transition:opacity .25s,color .25s}
+.footer a:hover{opacity:1;color:var(--brand)}
+.footer__brand p{font-size:.88rem;max-width:34ch;margin-top:1rem}
+.footer__bar{
+  margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.72rem;letter-spacing:.06em;color:var(--dim);
+}
+
+/* ============================================================
+   FLOATING WHATSAPP
+   ============================================================ */
+.fab{
+  position:fixed;right: 20px; bottom: 20px; z-index:90;
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#07130B;border-radius:100px;
+  padding: 12px 20px; font-size: 12px; letter-spacing:.12em;
+  text-transform:uppercase; font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  transition:transform .3s ease;
+}
+.fab:hover{transform:translateY(-3px)}
+.fab svg{width:22px;height:22px;flex:none}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS 
+   ============================================================ */
+@media (max-width:1050px){
+  .hero__in{grid-template-columns:1fr;gap:2.6rem}
+  .hero__panel{max-width:520px;margin:0 auto;width:100%}
+  .about__in{grid-template-columns:1fr;gap:2.4rem}
+  .contact__in{grid-template-columns:1fr}
+  .footer__in{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer__brand{grid-column:1/-1}
+}
+
+@media (max-width:900px){
+  .nav__toggle{display:grid}
+  .nav__links{
+    display:none;position:absolute;top:100%;left:0;width:100%;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--black);border-top:1px solid var(--line);
+    padding:1rem 1.25rem 1.5rem; z-index: 100;
+    max-height: calc(100vh - 78px); overflow-y: auto;
+  }
+  .nav__links.is-open{display:flex}
+  .nav__links a:not(.btn){padding:.85rem 0;font-size:.82rem;border-bottom:1px solid rgba(249,246,240,.07)}
+  .nav__links a:not(.btn)::after{display:none}
+  .nav__cta{margin-top:1rem;justify-content:center}
+  
+  .svc__grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  .rev__grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  
+  .look { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 200px; }
+  .look .ph:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .look .ph:nth-child(n+2) { grid-column: span 1; grid-row: span 1; }
+}
+
+@media (max-width:768px){
+  .steps{grid-template-columns:1fr;gap:1.8rem}
+  .svc__grid{grid-template-columns:1fr}
+  .rev__grid{grid-template-columns:1fr}
+  .footer__in{grid-template-columns:1fr}
+  .hero__badge{left:auto;right:1rem;bottom:1rem}
+}
+
+@media (max-width:600px){
+  .brand__txt small{display:none}
+  .brand__logo { width: 40px; height: 40px; }
+  .hero__actions .btn{flex:1 1 100%}
+  .hero__actions { flex-direction: column; }
+  
+  .fab {
+    padding: 0; width: 56px; height: 56px;
+    border-radius: 50%; justify-content: center;
+    right: 16px; bottom: 16px;
+  }
+  .fab span { display: none; }
+  
+  .look { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 1rem; }
+  .look .ph { aspect-ratio: 4/5; }
+  .look .ph:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .look .ph:nth-child(n+2) { grid-column: span 1; grid-row: span 1; }
+  .look .ph span { font-size: 0.55rem; letter-spacing: 0.15em; }
+  
+  .rev__head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .footer__bar { flex-direction: column; gap: 0.5rem; }
+}
+
+@media (max-width:400px){
+  .dot { display: none; }
+  .hero__proof { font-size: 0.7rem; }
+}
+</style>
+</head>
+
+<body id="top">
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#top" class="brand" aria-label="Destin Tailors home">
+      <div class="brand__logo">DT</div>
+      
+      <span class="brand__txt">
+        <strong>Destin Tailors</strong>
+        <small>Fashion Designer · Akure</small>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">The Brand</a>
+      <a href="#services">Services</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="btn btn--brand nav__cta">Book an Appointment</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">Bespoke Menswear & Women's Fashion · Akure</p>
+      <h1 class="reveal">Elegant fitting.<br><em>Precision</em> in every detail.</h1>
+      <p class="hero__sub reveal">
+        From luxury suits and groomswear to custom women's and children's fashion — 
+        we cut to fit, never to compromise.
+      </p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--brand" href="https://wa.me/2347031815918?text=Hello%20Destin%20Tailors%2C%20I%27d%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Book a fitting</a>
+        <a class="btn btn--ghost" href="tel:+2347031815918">0703 181 5918</a>
+      </div>
+      <div class="hero__proof reveal">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <strong>4.9</strong>
+        <span>· 79 Google reviews</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>1.7K+ on Facebook</span>
+      </div>
+    </div>
+
+    <div class="hero__panel reveal">
+      <!-- UPDATED HERO IMAGE -->
+      <div class="ph hero__ph" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792593037/HEROO.jpg');"><span>Signature Look</span></div>
+      <div class="hero__badge">Bespoke Perfection</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div>
+      <span>Luxury Suits</span><span>Groomswear</span><span>Women's Fashion</span>
+      <span>Alterations & Restyling</span><span>Children's Fashion</span><span>Custom Design</span>
+    </div>
+    <div>
+      <span>Luxury Suits</span><span>Groomswear</span><span>Women's Fashion</span>
+      <span>Alterations & Restyling</span><span>Children's Fashion</span><span>Custom Design</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section on-light" id="about">
+  <div class="wrap about__in">
+    <div class="about__media reveal">
+      <div class="ph about__ph1" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792584884/tailor.jpg');"><span>The workshop</span></div>
+      <div class="ph about__ph2" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792584885/about.jpg');"><span>Precision tailoring</span></div>
+    </div>
+
+    <div class="about__copy">
+      <p class="eyebrow reveal">The Brand</p>
+      <h2 class="reveal">Cut2Fit. A standard of excellence.</h2>
+      <p class="reveal">
+        Destin Tailors is a leading Nigerian clothing brand based in Akure. We believe that 
+        true elegance starts with a perfect fit. Whether you are walking down the aisle, 
+        attending a high-profile event, or updating your everyday wardrobe, we bring 
+        precision to every stitch.
+      </p>
+      <p class="reveal">
+        With over 79 five-star reviews on Google, our reputation is built on trust, 
+        attention to detail, and an unwavering commitment to making you look your absolute best.
+      </p>
+
+      <ul class="ticks reveal">
+        <li>Master tailors for Men's, Women's & Children's wear</li>
+        <li>Specialists in luxury suits and bespoke groomswear</li>
+        <li>Expert alterations, restyling, and general repairs</li>
+        <li>Convenient location at Masters Energy Complex, Oba Ile Rd</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="svc__head">
+      <div>
+        <p class="eyebrow reveal">Our Expertise</p>
+        <h2 class="reveal">Services</h2>
+      </div>
+      <a class="btn btn--ghost reveal" href="#contact">Start a commission</a>
+    </div>
+
+    <div class="svc__grid reveal">
+      <article class="svc">
+        <span class="svc__no">01</span>
+        <h3>Bespoke Suits & Groomswear</h3>
+        <p>Impeccably tailored suits and wedding attire for the modern gentleman, crafted from premium fabrics.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__no">02</span>
+        <h3>Men's Fashion Design</h3>
+        <p>From traditional agbadas and kaftans to contemporary casual wear, designed specifically for your silhouette.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__no">03</span>
+        <h3>Women's Fashion Design</h3>
+        <p>Elegant dresses, two-pieces, and custom gowns that celebrate the female form with class and sophistication.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__no">04</span>
+        <h3>Children's Fashion</h3>
+        <p>Adorable, durable, and perfectly fitted custom clothing for your little ones, made with the same precision as our adult wear.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__no">05</span>
+        <h3>Alterations & Restyling</h3>
+        <p>Give your favourite garments a second life. We resize, restyle, and repair existing clothing to fit you flawlessly.</p>
+      </article>
+      <article class="svc">
+        <span class="svc__no">06</span>
+        <h3>Custom Design & Delivery</h3>
+        <p>Have a specific vision? We bring original sketches to life and deliver safely worldwide.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOOKBOOK ================= -->
+<section class="section on-light" id="lookbook">
+  <div class="wrap">
+    <p class="eyebrow reveal">Selected work</p>
+    <h2 class="reveal" style="margin-bottom:2.4rem">The Lookbook</h2>
+
+    <div class="look reveal">
+      <div class="ph" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792592791/LOOK2.webp');"><span>Bespoke Suit</span></div>
+      <div class="ph" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792592792/SUITT.webp');"><span>Classic Tailoring</span></div>
+      <div class="ph" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792592792/LOOKBOOOK1.webp');"><span>Statement Piece</span></div>
+      <div class="ph" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792592792/LOOKBOOK2.webp');"><span>Detail & Finish</span></div>
+      <div class="ph" style="background-image: url('https://res.cloudinary.com/izxlyyn5/image/upload/v1792592791/LOOKBOOK3.webp');"><span>Custom Wear</span></div>
+    </div>
+
+    <p class="look__note reveal">
+      See the full archive on Instagram —
+      <a href="https://instagram.com/destin_tailors" target="_blank" rel="noopener" style="border-bottom:1px solid var(--brand-dk)">@destin_tailors</a>
+    </p>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="section" id="process">
+  <div class="wrap">
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="reveal">Three fittings from idea to wardrobe.</h2>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step__no">01</div>
+        <h3>Consultation</h3>
+        <p>We discuss the occasion, your style preferences, and fabric choices. We take precise measurements to establish the perfect fit.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step__no">02</div>
+        <h3>Measurement & Cut</h3>
+        <p>Your pattern is drafted from scratch (never from a size chart). The fabric is cut by hand with meticulous attention to grain and detail.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step__no">03</div>
+        <h3>Fitting & Delivery</h3>
+        <p>You try on the garment. We make any necessary refinements, press the final piece, and package it beautifully for pickup or delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="section on-light" id="reviews">
+  <div class="wrap">
+    <div class="rev__head reveal">
+      <span class="rev__score">4.9</span>
+      <div>
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <div class="rev__meta">Based on 79 Google reviews · Akure, Nigeria</div>
+      </div>
+    </div>
+
+    <div class="rev__grid reveal">
+      <article class="rev">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <p>“Elegant fitting and precision in every detail. Destin Tailors made my wedding suit and it fit like a glove.”</p>
+        <div class="rev__who">Sample review · replace with real</div>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <p>“I brought a dress for alterations and they completely restyled it. It looks better than when I bought it!”</p>
+        <div class="rev__who">Sample review · replace with real</div>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <p>“Their attention to detail is unmatched. I've ordered several custom pieces for myself and my kids. Highly recommended.”</p>
+        <div class="rev__who">Sample review · replace with real</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="contact">
+  <div class="wrap contact__in">
+    <div class="contact__col">
+      <p class="eyebrow reveal">Visit the workshop</p>
+      <h2 class="reveal">Let's get your measurements.</h2>
+      <p class="reveal">
+        Walk in during opening hours, or send a message and we'll set up an appointment.
+        Worldwide orders are welcome — we'll guide you through taking your own measurements.
+      </p>
+
+      <ul class="info reveal">
+        <li>
+          <span class="info__ico" aria-hidden="true">◈</span>
+          <div>
+            <div class="info__k">Address</div>
+            <div class="info__v">
+              Suite 8, Masters Energy Complex,<br>
+              Oba Ile Rd, Akure 340213, Ondo State, Nigeria
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="info__ico" aria-hidden="true">☎</span>
+          <div>
+            <div class="info__k">Phone / WhatsApp</div>
+            <div class="info__v"><a href="tel:+2347031815918">0703 181 5918</a></div>
+          </div>
+        </li>
+        <li>
+          <span class="info__ico" aria-hidden="true">◎</span>
+          <div>
+            <div class="info__k">Opening hours</div>
+            <div class="info__v hours">
+              <b>Mon – Fri</b> &nbsp;9:00 am – 6:00 pm<br>
+              <b>Saturday</b> &nbsp;10:00 am – 4:00 pm<br>
+              <b>Sunday</b> &nbsp;Closed
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="reveal" style="margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap">
+        <a class="btn btn--ghost" href="https://maps.google.com/?q=Destin+tailors,+Suite+8,+masters+energy+complex,+Oba+Ile+Rd,+Akure" target="_blank" rel="noopener">Get directions</a>
+        <a class="btn btn--ghost" href="https://instagram.com/destin_tailors" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+
+    <div class="contact__col">
+      <div class="card reveal">
+        <h3>Request an appointment</h3>
+        <p>Fill this in and it opens WhatsApp with your details ready to send.</p>
+
+        <form id="bookForm" novalidate>
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" placeholder="e.g. Tunde Adeyemi" required>
+          </div>
+
+          <div class="field">
+            <label for="f-service">Service</label>
+            <select id="f-service" name="service">
+              <option>Bespoke Suit / Groomswear</option>
+              <option>Men's Fashion Design</option>
+              <option>Women's Fashion Design</option>
+              <option>Children's Fashion</option>
+              <option>Alterations & Restyling</option>
+              <option>General Repairs</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-date">Preferred date</label>
+            <input id="f-date" name="date" type="date">
+          </div>
+
+          <div class="field">
+            <label for="f-notes">Anything else?</label>
+            <textarea id="f-notes" name="notes" placeholder="Occasion, fabric preference, timeline…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--brand">Send via WhatsApp</button>
+          <p class="card__foot">Or call <a href="tel:+2347031815918" style="color:var(--brand)">0703 181 5918</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__in">
+      <div class="footer__brand">
+        <a href="#top" class="brand">
+          <div class="brand__logo">DT</div>
+          <span class="brand__txt">
+            <strong>Destin Tailors</strong>
+            <small>Fashion Designer · Akure</small>
+          </span>
+        </a>
+        <p>Nigerian clothing brand creating luxury suits, groomswear, bespoke custom clothing, women's fashion, and precision alterations.</p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">The Brand</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#lookbook">Lookbook</a></li>
+          <li><a href="#process">Process</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/2347031815918" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://instagram.com/destin_tailors" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://facebook.com/wecut2fit" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="tel:+2347031815918">0703 181 5918</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span>© <span id="year">2025</span> Destin Tailors. All rights reserved.</span>
+      <span>Suite 8, Masters Energy Complex, Akure</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a class="fab" href="https://wa.me/2347031815918?text=Hello%20Destin%20Tailors%2C%20I%27d%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2m0 18.15c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23 4.53 0 8.23 3.69 8.23 8.23 0 4.54-3.7 8.24-8.16 8.24m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2s.86 2.32.98 2.48c.12.17 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.29"/></svg>
+  <span>Chat with us</span>
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  const $  = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+  // DESTIN TAILORS PHONE NUMBER
+  const PHONE = '2347031815918'; 
+
+  const nav = $('#nav');
+  const setNavState = () => nav.classList.toggle('is-stuck', window.scrollY > 16);
+  setNavState();
+  window.addEventListener('scroll', setNavState, { passive: true });
+
+  const toggle = $('#navToggle');
+  const links  = $('#navLinks');
+
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('is-open');
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  $$('#navLinks a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = $$('.reveal');
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    items.forEach(el => io.observe(el));
+  }
+
+  $('#year').textContent = new Date().getFullYear();
+
+  const dateInput = $('#f-date');
+  if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+  const form = $('#bookForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name    = $('#f-name').value.trim();
+    const service = $('#f-service').value;
+    const date    = $('#f-date').value;
+    const notes   = $('#f-notes').value.trim();
+
+    if (!name) {
+      $('#f-name').focus();
+      $('#f-name').style.borderColor = 'var(--brand)';
+      return;
+    }
+
+    const lines = [
+      "Hello Destin Tailors, I'd like to book an appointment.",
+      '',
+      'Name: ' + name,
+      'Service: ' + service
+    ];
+    if (date)  lines.push('Preferred date: ' + date);
+    if (notes) lines.push('Notes: ' + notes);
+
+    window.open(
+      'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n')),
+      '_blank',
+      'noopener'
+    );
+  });
+})();
+</script>
+</body>
+</html>
